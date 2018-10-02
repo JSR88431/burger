@@ -1,0 +1,37 @@
+<h1>Welcome to Burger Land!</h1>
+
+
+<ul>
+  {{#each burgers}}
+  {{#unless devoured}}
+  <li>
+    {{this.burger_name}}
+  </li>
+  {{> burgers/burger-block devoured=true}}
+  {{/unless}}
+  {{/each}}
+</ul>
+
+
+<h3>Type the name of the Burger you wish to devour.</h3>
+
+
+  <form>
+    <div class="form-group">
+      <input type="text" class="form-control-lg" id="textInput" name="burger_name" placeholder="What kind of burger do you crave?">
+    </div>
+
+    <button type="submit" id="addBurger">Add Burger</button>
+  </form>
+
+
+<h2>Burgers you have eaten !</h2>
+
+{{#each burgers}}
+{{#if this.devoured}}
+<li>
+  {{this.burger_name}}
+</li>
+{{> burgers/burger-block devoured=false}}
+{{/if}}
+{{/each}}
